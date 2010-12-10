@@ -24,8 +24,12 @@ if (window.rcmail) {
         //alert('select');
       });
   });
+  rcmail.addEventListener('listupdate','chbox_menu');
   rcmail.addEventListener('insertrow', function(evt) {
     var row = evt.row
+    if ((found = $.inArray('chbox', rcmail.env.coltypes)) >= 0) {
+      rcmail.set_env('chbox_col', found);
+    }
     // set eventhandler to checkbox selection
     if (rcmail.env.chbox_col != null && (row.select = document.getElementById('rcmselect'+row.uid))) {
       row.select._row = row.obj;
@@ -42,3 +46,8 @@ if (window.rcmail) {
     }
   });
 }
+
+$(document).ready(function(){
+  var li = '<li><input type="checkbox" name="list_col[]" value="chbox" id="cols_chbox" /><label for="cols_chbox">'+rcmail.get_label('chbox.chbox')+'</label></li>';
+  $("#listmenu fieldset ul input#cols_threads").parent().after(li);
+});

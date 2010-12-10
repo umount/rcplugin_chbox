@@ -23,9 +23,11 @@ class chbox extends rcube_plugin {
   }
 
   function startup_chbox($args){
+    $this->add_texts('localization');
     $rcmail = rcmail::get_instance();
     $icon = 'plugins/chbox/' .$this->local_skin_path(). '/columncheck.png';
-    $chboxicon = html::img(array('src' => $icon, 'id' => 'selectmenulink', 'title' => rcube_label('chbox')));
+    $chboxicon = html::img(array('src' => $icon, 'id' => 'selectmenulink', 'title' => $this->gettext('chbox'), 'alt' => $this->gettext('chbox')));
+    $rcmail->output->add_label('chbox.chbox');
     $rcmail->output->set_env('chboxicon', $chboxicon);
     return $args;
   }
@@ -49,7 +51,6 @@ class chbox extends rcube_plugin {
       <li><a title=\"".rcube_label('none')."\" href=\"#\" onclick=\"return rcmail.command('select-none','',this)\" class=\"active\">".rcube_label('none')."</a></li>
       </ul>
     </div>";
-
     $rcmail->output->add_gui_object('selectmenu', 'selectmenu');
     $rcmail->output->add_footer($out);
 

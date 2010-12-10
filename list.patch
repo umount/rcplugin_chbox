@@ -1,0 +1,31 @@
+811a812,817
+>   for (var n=0; n<this.selection.length; n++)
+>     if (this.rows[this.selection[n]]) {
+>       var select = document.getElementById('rcmselect'+this.selection[n]);
+>       if (select) select.checked = false;
+>     }
+> 
+871a878,881
+>         /* start chbox patch */
+>         var select = document.getElementById('rcmselect'+id);
+>         if (select) select.checked = false;
+>         /* end chbox patch */
+879a890,893
+>         /* start chbox patch */
+>         var select = document.getElementById('rcmselect'+this.selection[n]);
+>         if (select) select.checked = false;
+>         /* end chbox patch */
+915a930
+>   var select = document.getElementById('rcmselect'+id);
+920a936,938
+>       /* start chbox patch */
+>       if (select) select.checked = true;
+>       /* end chbox patch */
+926a945,947
+>       /* start chbox patch */
+>       if (select) select.checked = true;
+>       /* end chbox patch */
+933a955,957
+>       /* start chbox patch */
+>       if (select) select.checked = false;
+>       /* end chbox patch */

@@ -1,11 +1,29 @@
 /*
  * Check box plugin
- * @version 0.1
+ * @version 0.2
  * @author Denis Sobolev
  */
 
+rcube_mail_ui.prototype.selectmenu = function() {
+  add = {
+    selectmenu:     {id:'selectmenu'}
+  };
+  this.popups = $.extend(this.popups, add);
+  var obj;
+  for (var k in this.popups) {
+    obj = $('#'+this.popups[k].id)
+    if (obj.length)
+      this.popups[k].obj = obj;
+    else {
+      delete this.popups[k];
+    }
+  }
+}
+
+
 function rcmail_selectmenu() {
-  rcmail_ui.show_popup('selectmenu');
+  rcmail_ui.selectmenu();
+  rcmail_ui.show_popupmenu('selectmenu');
   return false;
 }
 

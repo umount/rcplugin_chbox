@@ -15,10 +15,10 @@ class chbox extends rcube_plugin {
     $rcmail = rcmail::get_instance();
     if (($rcmail->task == 'mail') && ($rcmail->action == '')) {
       $this->add_hook('render_page', array($this, 'select_menu'));
+      $this->include_script('chbox.js');
     }
     $this->add_hook('startup', array($this, 'startup_chbox'));
     $this->add_hook('messages_list', array($this, 'message_list'));
-    $this->include_script('chbox.js');
     $this->include_stylesheet("skins/default/chbox.css");
   }
 

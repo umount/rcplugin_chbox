@@ -33,10 +33,12 @@ class chbox extends rcube_plugin {
   }
 
   function message_list($args){
-    $count = count($args['messages']) - 1;
+    $count = count($args['messages']);
+
     for ($i=0;$i<$count;$i++) {
       $uid = $args['messages'][$i]->uid;
-      $args['messages'][$i]->list_cols['chbox'] = '<input type="checkbox" name="rcmselect'.$uid.'" id="rcmselect'.$uid.'" />';
+      if(!empty($uid))
+        $args['messages'][$i]->list_cols['chbox'] = '<input type="checkbox" name="rcmselect'.$uid.'" id="rcmselect'.$uid.'" />';
     }
     return $args;
   }

@@ -1,6 +1,6 @@
 /*
  * Check box plugin
- * @version 0.2
+ * @version 0.2.1
  * @author Denis Sobolev
  */
 
@@ -9,20 +9,17 @@ rcube_mail_ui.prototype.selectmenu = function() {
     selectmenu:     {id:'selectmenu'}
   };
   this.popups = $.extend(this.popups, add);
-  var obj;
-  for (var k in this.popups) {
-    obj = $('#'+this.popups[k].id)
-    if (obj.length)
-      this.popups[k].obj = obj;
-    else {
-      delete this.popups[k];
-    }
+  var obj = $('#'+this.popups.selectmenu.id);
+  if (obj.length)
+    this.popups.selectmenu.obj = obj;
+  else {
+    delete this.popups.selectmenu;
   }
 }
 
-
 function rcmail_selectmenu() {
-  rcmail_ui.selectmenu();
+  if (!rcmail_ui.popups.selectmenu)
+    rcmail_ui.selectmenu();
   rcmail_ui.show_popupmenu('selectmenu');
   return false;
 }
@@ -61,7 +58,6 @@ if (window.rcmail) {
       });
     }
   });
-
 
   rcmail.addEventListener('listupdate','chbox_menu');
   rcmail.addEventListener('insertrow', function(evt) {

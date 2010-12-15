@@ -4,7 +4,7 @@
  * Check box plugin
  *
  *
- * @version 0.2
+ * @version 0.2.1
  * @author Denis Sobolev
  */
 
@@ -55,7 +55,5 @@ class chbox extends rcube_plugin {
     </div>";
     $rcmail->output->add_gui_object('selectmenu', 'selectmenu');
     $rcmail->output->add_footer($out);
-
   }
-
 }

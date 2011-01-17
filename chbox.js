@@ -30,9 +30,9 @@ function chbox_menu(){
 }
 
 if (window.rcmail) {
+  chbox_menu();
   rcmail.addEventListener('init', function(evt) {
     rcmail.register_command('plugin.chbox.selectmenu', rcmail_selectmenu, true);
-    chbox_menu();
     // add event-listener to message list
     if (rcmail.message_list) {
       rcmail.message_list.addEventListener('select', function(list){
@@ -81,6 +81,7 @@ if (window.rcmail) {
     }
   });
 }
+
 
 $(document).ready(function(){
   var li = '<li><input type="checkbox" name="list_col[]" value="chbox" id="cols_chbox" /><label for="cols_chbox">'+rcmail.get_label('chbox.chbox')+'</label></li>';

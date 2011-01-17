@@ -19,7 +19,7 @@ class chbox extends rcube_plugin {
     }
     $this->add_hook('startup', array($this, 'startup_chbox'));
     $this->add_hook('messages_list', array($this, 'message_list'));
-    $this->include_stylesheet("skins/default/chbox.css");
+    $this->include_stylesheet($this->local_skin_path() . "/chbox.css");
   }
 
   function startup_chbox($args){

@@ -30,7 +30,6 @@ function chbox_menu(){
 }
 
 if (window.rcmail) {
-  chbox_menu();
   rcmail.addEventListener('init', function(evt) {
     rcmail.register_command('plugin.chbox.selectmenu', rcmail_selectmenu, true);
     // add event-listener to message list
@@ -70,11 +69,6 @@ if (window.rcmail) {
       row.select._row = row.obj;
       row.select.onclick = function(e) {
         // don't include the non-selected checkbox in this
-        if (document.getElementById('rcmselect'+rcmail.message_list.last_selected)
-              && document.getElementById('rcmselect'+rcmail.message_list.last_selected).checked != true
-              && rcmail.message_list.last_selected != row.uid) {
-          rcmail.message_list.clear_selection();
-        }
         rcmail.message_list.select_row(row.uid, CONTROL_KEY, false);
         $("#selectcount").html(rcmail.message_list.selection.length);
       };
@@ -84,6 +78,7 @@ if (window.rcmail) {
 
 
 $(document).ready(function(){
+  chbox_menu();
   var li = '<li><input type="checkbox" name="list_col[]" value="chbox" id="cols_chbox" /><label for="cols_chbox">'+rcmail.get_label('chbox.chbox')+'</label></li>';
   $("#listmenu fieldset ul input#cols_threads").parent().after(li);
 });

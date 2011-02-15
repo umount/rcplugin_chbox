@@ -15,11 +15,10 @@ class chbox extends rcube_plugin {
     $rcmail = rcmail::get_instance();
     if (($rcmail->task == 'mail') && ($rcmail->action == '')) {
       $this->add_hook('render_page', array($this, 'select_menu'));
+      $this->add_hook('render_page', array($this, 'startup_chbox'));
       $this->include_script('chbox.js');
     }
-    $this->add_hook('startup', array($this, 'startup_chbox'));
     $this->add_hook('messages_list', array($this, 'message_list'));
-    $this->include_stylesheet($this->local_skin_path() . "/chbox.css");
   }
 
   function startup_chbox($args){
@@ -29,6 +28,8 @@ class chbox extends rcube_plugin {
     $chboxicon = html::img(array('src' => $icon, 'id' => 'selectmenulink', 'title' => $this->gettext('chbox'), 'alt' => $this->gettext('chbox')));
     $rcmail->output->add_label('chbox.chbox');
     $rcmail->output->set_env('chboxicon', $chboxicon);
+    $this->include_stylesheet($this->local_skin_path(). '/chbox.css');
+
     return $args;
   }
 

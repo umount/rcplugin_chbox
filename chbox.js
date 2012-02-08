@@ -20,6 +20,15 @@ rcube_mail_ui.prototype.selectmenu = function() {
 function rcmail_selectmenu() {
   if (!rcmail_ui.popups.selectmenu)
     rcmail_ui.selectmenu();
+
+  var obj = rcmail_ui.popups['selectmenu'].obj
+  show = obj.is(':visible') ? false : true;
+  if(show) {
+    $('#selectmenu').mouseleave(function() { return rcmail.command('plugin.chbox.selectmenu')});
+  }else {
+    $('#selectmenu').unbind('mouseleave');
+  }
+
   rcmail_ui.show_popupmenu('selectmenu');
   return false;
 }

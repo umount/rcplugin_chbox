@@ -6,12 +6,28 @@ This is plugin for roundcube
 
 Install
 ----------------------------------------
-1- Add the plugin to roundcube $rcmail_config['plugins'] array
-2- Add 'chbox' column to $rcmail_config['list_cols'] array
+1- Add the plugin to roundcube $config['plugins'] array like:
 
-Contact
+$config['plugins'] = array(
+    'chbox',
+    'archive',
+    'zipdownload',
+    'jqueryui',
+    'filters',
+    'userinfo',
+    'password',
+    'markasjunk2',
+    'hide_blockquote',
+    'contextmenu',
+    'globaladdressbook',
+    'newmail_notifier',
+    'vcard_attachments',
+);
+
+2- Add 'chbox' column to $rcmail_config['list_cols'] array like:
+
+$rcmail_config['list_cols'] = array('chbox','subject','status', 'from', 'date', 'size', 'flag', 'attachment','list_cols');
+
+Testing
 ----------------------------------------
-Comments and suggestions are welcome.
-
-Email: dns.sobol@gmail.com
-Email: manuel.delgado@ucr.ac.cr
+Tested 14.03.2014 on RoundCube 1.0-RC

@@ -4,7 +4,7 @@
  * Check box plugin
  *
  *
- * @version 0.2.1
+ * @version 0.2.3
  * @author Denis Sobolev
  */
 
@@ -12,7 +12,7 @@ class chbox extends rcube_plugin {
   public $task = 'mail';
 
   function init() {
-    $rcmail = rcmail::get_instance();
+    $rcmail = rcube::get_instance();
     if (($rcmail->task == 'mail') && ($rcmail->action == '')) {
       $this->add_hook('render_page', array($this, 'select_menu'));
       $this->add_hook('render_page', array($this, 'startup_chbox'));
@@ -23,7 +23,7 @@ class chbox extends rcube_plugin {
 
   function startup_chbox($args){
     $this->add_texts('localization');
-    $rcmail = rcmail::get_instance();
+    $rcmail = rcube::get_instance();
     $icon = 'plugins/chbox/' .$this->local_skin_path(). '/columncheck.png';
     $chboxicon = html::img(array('src' => $icon, 'id' => 'selectmenulink', 'title' => $this->gettext('chbox'), 'alt' => $this->gettext('chbox')));
     $rcmail->output->add_label('chbox.chbox');
@@ -45,7 +45,7 @@ class chbox extends rcube_plugin {
   }
 
   function select_menu() {
-    $rcmail = rcmail::get_instance();
+    $rcmail = rcube::get_instance();
     $out = "<div id=\"selectmenu\" class=\"popupmenu\">
     <ul>
       <li><a title=\"".rcube_label('all')."\" href=\"#\" onclick=\"return rcmail.command('select-all','',this)\" class=\"active\">".rcube_label('all')."</a></li>

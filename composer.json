@@ -6,7 +6,17 @@
     "license": "GNU GPLv3+",
     "version": "0.2.3",
     "authors": [
-		{
+    	{
+            "name": "Denis Sobolev",
+            "email": "dns.sobol@gmail.com",
+            "role": "Author"
+        },
+        {
+            "name": "Manuel Delgado",
+            "email": "manuel.delgado@ucr.ac.cr",
+            "role": "Developer"
+        },
+	{
             "name": "Artur Petrov",
             "email": "admin@gtn18.ru",
             "role": "Developer"
@@ -24,7 +34,8 @@
     },
     "extra": {
         "roundcube": {
-             "min-version": "1.0-rc"
+             "min-version": "0.9.5",
+             "max-version": "1.0.*"
         }
     }
 }

@@ -18,4 +18,4 @@ $rcmail_config['list_cols'] = array('chbox','subject','status', 'from', 'date', 
 
 Testing
 ----------------------------------------
-Tested 14.03.2014 on RoundCube 1.0.2
+RoundCube 1.0.2

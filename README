@@ -10,18 +10,6 @@ Install
 
 $config['plugins'] = array(
     'chbox',
-    'archive',
-    'zipdownload',
-    'jqueryui',
-    'filters',
-    'userinfo',
-    'password',
-    'markasjunk2',
-    'hide_blockquote',
-    'contextmenu',
-    'globaladdressbook',
-    'newmail_notifier',
-    'vcard_attachments',
 );
 
 2- Add 'chbox' column to $rcmail_config['list_cols'] array like:
@@ -30,5 +18,4 @@ $rcmail_config['list_cols'] = array('chbox','subject','status', 'from', 'date', 
 
 Testing
 ----------------------------------------
-Tested 14.03.2014 on RoundCube 1.0-RC
-Tested 24.03.2014 on RoundCube 0.9.5
+Tested 14.03.2014 on RoundCube 1.0.2

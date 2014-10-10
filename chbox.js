@@ -1,6 +1,6 @@
 /*
  * Check box plugin
- * @version 0.2.2
+ * @version 0.2.3
  * @author Denis Sobolev
  */
 
@@ -63,7 +63,10 @@ if (window.rcmail) {
         for (var uid, i=0, len=selection.length; i<len; i++) {
             uid = selection[i];
             var select = document.getElementById('rcmselect'+uid);
-            if (select) select.checked = true;
+            if (select) {
+				select.checked = true;
+				//rcmail.message_list.select_childs(uid);
+			}
         }
       });
     }
@@ -83,7 +86,7 @@ if (window.rcmail) {
       row.select._row = row.obj;
       row.select.onclick = function(e) {
         // don't include the non-selected checkbox in this
-        rcmail.message_list.select_row(row.uid, CONTROL_KEY, false);
+        rcmail.message_list.select_row(row.uid, CONTROL_KEY, true);
         $("#selectcount").html(rcmail.message_list.selection.length);
       };
     }
@@ -93,6 +96,7 @@ if (window.rcmail) {
 
 $(document).ready(function(){
   chbox_menu();
-  var li = '<li><input type="checkbox" name="list_col[]" value="chbox" id="cols_chbox" /><label for="cols_chbox">'+rcmail.get_label('chbox.chbox')+'</label></li>';
+  var li = '<label><input type="checkbox" name="list_col[]" value="chbox" id="cols_chbox" /><span>'+rcmail.get_label('chbox.chbox')+'</span></label>';
   $("#listmenu fieldset ul input#cols_threads").parent().after(li);
+  $("#listoptions fieldset:first-child ul.proplist li:first-child").after('<li>'+li+'</li>');
 });

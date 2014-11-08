@@ -5,8 +5,26 @@
   text-align: center;
 }
 
-#selectmenu li a:hover
+#selectmenu ul
 {
-  color: #fff;
-  background-color: #7096C0;
+  margin: 0px;
+}
+
+#selectmenu ul li
+{
+  padding: 10px;
+  margin-left: -40px;
+  li-style-type: none;
+  display: block;
+}
+
+#selectmenu ul li:hover
+{
+   background-color: #C2E2F9;
+}
+
+#selectmenu ul li a
+{
+  text-decoration: none;
+  color: black;
 }

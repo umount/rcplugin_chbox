@@ -20,18 +20,23 @@ if ( typeof rcube_mail_ui  === 'function' ) {
 }
 
 function rcmail_selectmenu() {
-  if (!rcmail_ui.popups.selectmenu)
-    rcmail_ui.selectmenu();
+  if (typeof rcmail_ui != 'undefined') {
+    if (!rcmail_ui.popups.selectmenu)
+      rcmail_ui.selectmenu();
 
-  var obj = rcmail_ui.popups['selectmenu'].obj
-  show = obj.is(':visible') ? false : true;
-  if(show) {
-    $('#selectmenu').mouseleave(function() { return rcmail.command('plugin.chbox.selectmenu')});
-  } else {
-    $('#selectmenu').unbind('mouseleave');
+    var obj = rcmail_ui.popups['selectmenu'].obj
+    show = obj.is(':visible') ? false : true;
+    if(show) {
+      $('#selectmenu').mouseleave(function() { return rcmail.command('plugin.chbox.selectmenu')});
+    } else {
+      $('#selectmenu').unbind('mouseleave');
+    }
+    rcmail_ui.show_popupmenu('selectmenu');
+  }else {
+    UI.show_popup('selectmenu');
+    var obj = $('#selectmenu');
+    obj.mouseleave(function() { return  obj.hide();});
   }
-
-  rcmail_ui.show_popupmenu('selectmenu');
   return false;
 }
 

@@ -16,15 +16,10 @@
   margin-left: -40px;
   li-style-type: none;
   display: block;
+  color: white;
 }
 
 #selectmenu ul li:hover
 {
-   background-color: #0069a6;
-}
-
-#selectmenu ul li a
-{
-  text-decoration: none;
-  color: white;
+   background-color: #0186ba;
 }

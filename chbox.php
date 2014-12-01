@@ -51,9 +51,9 @@ class chbox extends rcube_plugin {
       $out .= "<div id=\"selectmenu\" class=\"popupmenu\">
         <ul>
           <li><a title=\"".rcube_label('all')."\" href=\"#\" onclick=\"return rcmail.command('select-all','',this)\" class=\"active\">".rcube_label('all')."</a></li>
-          <li><a title=\"".rcube_label('currpage')."\" href=\"#\" onclick=\"return rcmail.command('select-all','page',this)\" class=\"active\">".rcube_label('currpage')
-          <li><a title=\"".rcube_label('unread')."\" href=\"#\" onclick=\"return rcmail.command('select-all','unread',this)\" class=\"active\">".rcube_label('unread')."
-          <li><a title=\"".rcube_label('invert')."\" href=\"#\" onclick=\"return rcmail.command('select-all','invert',this)\" class=\"active\">".rcube_label('invert')."
+          <li><a title=\"".rcube_label('currpage')."\" href=\"#\" onclick=\"return rcmail.command('select-all','page',this)\" class=\"active\">".rcube_label('currpage')."</a></li>
+          <li><a title=\"".rcube_label('unread')."\" href=\"#\" onclick=\"return rcmail.command('select-all','unread',this)\" class=\"active\">".rcube_label('unread')."</a></li>
+          <li><a title=\"".rcube_label('invert')."\" href=\"#\" onclick=\"return rcmail.command('select-all','invert',this)\" class=\"active\">".rcube_label('invert')."</a></li>
           <li><a title=\"".rcube_label('none')."\" href=\"#\" onclick=\"return rcmail.command('select-none','',this)\" class=\"active\">".rcube_label('none')."</a></li>
         </ul>";
     } else {

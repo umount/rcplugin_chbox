@@ -1,3 +1,10 @@
+.messagelist thead tr>.chbox
+{
+  width: 25px;
+  padding: 0px 2px 1px 2px;
+  text-align: center;
+}
+
 #messagelist tr td.chbox
 {
   width: 20px;

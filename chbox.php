@@ -4,7 +4,7 @@
  * Check box plugin
  *
  *
- * @version 0.2.3
+ * @version 0.2.4
  * @author Denis Sobolev
  */
 
@@ -38,8 +38,10 @@ class chbox extends rcube_plugin {
 
     for ($i=0;$i<$count;$i++) {
       $uid = $args['messages'][$i]->uid;
-      if(!empty($uid))
-        $args['messages'][$i]->list_cols['chbox'] = '<input type="checkbox" name="rcmselect'.$uid.'" id="rcmselect'.$uid.'" />';
+    if(!empty($uid))
+      $tmp = $args['messages'][$i]->list_cols['chbox'];
+      $args['messages'][$i]->list_cols['chbox'] = '<span id="msgicnrcmrowMTExOTg" class="msgicon" title=""></span>
+        <input type="checkbox" name="rcmselect'.$uid.'" id="rcmselect'.$uid.'" />';
     }
     return $args;
   }

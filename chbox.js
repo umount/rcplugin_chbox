@@ -1,6 +1,6 @@
 /*
  * Check box plugin
- * @version 0.2.3
+ * @version 0.2.4
  * @author Denis Sobolev
  */
 
@@ -80,7 +80,7 @@ if (window.rcmail) {
   rcmail.addEventListener('listupdate','chbox_menu');
   rcmail.addEventListener('insertrow', function(evt) {
     var row = evt.row
-    if ((found = $.inArray('chbox', rcmail.env.coltypes)) >= 0) {
+    if (found = (typeof(rcmail.env.coltypes.chbox) != "undefined" || $.inArray('chbox', rcmail.env.coltypes) >= 0)) {
       rcmail.set_env('chbox_col', found);
     }
     // set eventhandler to checkbox selection
@@ -103,5 +103,5 @@ $(document).ready(function(){
   chbox_menu();
   var li = '<label><input type="checkbox" name="list_col[]" value="chbox" id="cols_chbox" /><span>'+rcmail.get_label('chbox.chbox')+'</span></label>';
   $("#listmenu fieldset ul input#cols_threads").parent().after(li);
-  $("#listoptions fieldset:first-child ul.proplist li:first-child").after('<li>'+li+'</li>');
+  $("#listoptions fieldset ul.proplist:first li:first-child").after('<li>'+li+'</li>');
 });

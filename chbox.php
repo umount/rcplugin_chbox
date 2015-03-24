@@ -4,7 +4,7 @@
  * Check box plugin
  *
  *
- * @version 0.2.3
+ * @version 0.2.4
  * @author Denis Sobolev
  */
 
@@ -38,23 +38,37 @@ class chbox extends rcube_plugin {
 
     for ($i=0;$i<$count;$i++) {
       $uid = $args['messages'][$i]->uid;
-      if(!empty($uid))
-        $args['messages'][$i]->list_cols['chbox'] = '<input type="checkbox" name="rcmselect'.$uid.'" id="rcmselect'.$uid.'" />';
+    if(!empty($uid))
+      $tmp = $args['messages'][$i]->list_cols['chbox'];
+      $args['messages'][$i]->list_cols['chbox'] = '<span id="msgicnrcmrowMTExOTg" class="msgicon" title=""></span>
+        <input type="checkbox" name="rcmselect'.$uid.'" id="rcmselect'.$uid.'" />';
     }
     return $args;
   }
 
   function select_menu() {
     $rcmail = rcmail::get_instance();
-    $out = "<div id=\"selectmenu\" class=\"popupmenu\">
-    <ul>
-      <li><a title=\"".rcube_label('all')."\" href=\"#\" onclick=\"return rcmail.command('select-all','',this)\" class=\"active\">".rcube_label('all')."</a></li>
-      <li><a title=\"".rcube_label('currpage')."\" href=\"#\" onclick=\"return rcmail.command('select-all','page',this)\" class=\"active\">".rcube_label('currpage')."</a></li>
-      <li><a title=\"".rcube_label('unread')."\" href=\"#\" onclick=\"return rcmail.command('select-all','unread',this)\" class=\"active\">".rcube_label('unread')."</a></li>
-      <li><a title=\"".rcube_label('invert')."\" href=\"#\" onclick=\"return rcmail.command('select-all','invert',this)\" class=\"active\">".rcube_label('invert')."</a></li>
-      <li><a title=\"".rcube_label('none')."\" href=\"#\" onclick=\"return rcmail.command('select-none','',this)\" class=\"active\">".rcube_label('none')."</a></li>
-      </ul>
-    </div>";
+    $skin = $rcmail->config->get('skin');
+    if ($skin == 'classic' or $skin == 'default') {
+      $out .= "<div id=\"selectmenu\" class=\"popupmenu\">
+        <ul>
+          <li><a title=\"".rcube_label('all')."\" href=\"#\" onclick=\"return rcmail.command('select-all','',this)\" class=\"active\">".rcube_label('all')."</a></li>
+          <li><a title=\"".rcube_label('currpage')."\" href=\"#\" onclick=\"return rcmail.command('select-all','page',this)\" class=\"active\">".rcube_label('currpage')."</a></li>
+          <li><a title=\"".rcube_label('unread')."\" href=\"#\" onclick=\"return rcmail.command('select-all','unread',this)\" class=\"active\">".rcube_label('unread')."</a></li>
+          <li><a title=\"".rcube_label('invert')."\" href=\"#\" onclick=\"return rcmail.command('select-all','invert',this)\" class=\"active\">".rcube_label('invert')."</a></li>
+          <li><a title=\"".rcube_label('none')."\" href=\"#\" onclick=\"return rcmail.command('select-none','',this)\" class=\"active\">".rcube_label('none')."</a></li>
+        </ul>";
+    } else {
+      $out .="<div id=\"selectmenu\" class=\"popupmenu dropdown\">
+        <ul>
+          <li title=\"".rcube_label('all')."\" onclick=\"return rcmail.command('select-all','',this)\" class=\"active\">".rcube_label('all')."</li>
+          <li title=\"".rcube_label('currpage')."\" onclick=\"return rcmail.command('select-all','page',this)\" class=\"active\">".rcube_label('currpage')."</li>
+          <li title=\"".rcube_label('unread')."\" onclick=\"return rcmail.command('select-all','unread',this)\" class=\"active\">".rcube_label('unread')."</li>
+          <li title=\"".rcube_label('invert')."\" onclick=\"return rcmail.command('select-all','invert',this)\" class=\"active\">".rcube_label('invert')."</li>
+          <li title=\"".rcube_label('none')."\" onclick=\"return rcmail.command('select-none','',this)\" class=\"active\">".rcube_label('none')."</li>
+        </ul>";
+    }
+    $out .= "</div>";
     $rcmail->output->add_gui_object('selectmenu', 'selectmenu');
     $rcmail->output->add_footer($out);
   }
